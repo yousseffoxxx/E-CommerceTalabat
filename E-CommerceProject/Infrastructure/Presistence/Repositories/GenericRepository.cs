@@ -1,4 +1,5 @@
-﻿using Persistence.Data;
+﻿using Domain.Contracts;
+using Persistence.Data;
 
 namespace Persistence.Repositories
 {
@@ -22,10 +23,14 @@ namespace Persistence.Repositories
         public async Task<IEnumerable<TEntity>> GetAllAsync(bool trackChanges = false)
            =>  trackChanges? await _storeContext.Set<TEntity>().ToListAsync()
                 : await _storeContext.Set<TEntity>().AsNoTracking().ToListAsync();
-            /*
-                if(trackChanges)
-                    return await _storeContext.Set<TEntity>().ToListAsync();
-                return await _storeContext.Set<TEntity>().AsNoTracking().ToListAsync();
-            */
+
+        public async Task<TEntity?> GetAsync(Specifications<TEntity> specifications)
+                    => await ApplySpecifications(specifications).FirstOrDefaultAsync();
+
+        public async Task<IEnumerable<TEntity>> GetAllAsync(Specifications<TEntity> specifications)
+           => await ApplySpecifications(specifications).ToListAsync();
+
+        private IQueryable<TEntity> ApplySpecifications(Specifications<TEntity> specifications)
+            => SpecificationEvaluator.GetQuery<TEntity>(_storeContext.Set<TEntity>(), specifications);
     }
 }
