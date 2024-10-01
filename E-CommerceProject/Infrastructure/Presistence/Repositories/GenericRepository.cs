@@ -19,7 +19,7 @@ namespace Persistence.Repositories
 
         public async Task<TEntity?> GetAsync(TKey id) => await _storeContext.Set<TEntity>().FindAsync(id);    
 
-        public async Task<IEnumerable<TEntity>> GetAllAsync(bool trackChanges)
+        public async Task<IEnumerable<TEntity>> GetAllAsync(bool trackChanges = false)
            =>  trackChanges? await _storeContext.Set<TEntity>().ToListAsync()
                 : await _storeContext.Set<TEntity>().AsNoTracking().ToListAsync();
             /*
