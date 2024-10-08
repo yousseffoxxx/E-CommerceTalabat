@@ -28,5 +28,6 @@ namespace Shared
             get => _pageSize;
             set => _pageSize = value > MAXPAGESIZE ? MAXPAGESIZE : value;  
         }
+        public string? Search { get; set; }
     }
 }
