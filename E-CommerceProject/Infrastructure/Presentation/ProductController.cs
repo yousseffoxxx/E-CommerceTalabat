@@ -1,10 +1,17 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Services.Abstractions;
 using Shared;
+using Shared.ErrorModels;
+using System.Net;
 namespace Presentation
 {
     [ApiController]
     [Route("api/[controller]")]
+    [ProducesResponseType(typeof(ErrorDetails), (int)HttpStatusCode.NotFound)]
+    [ProducesResponseType(typeof(ErrorDetails), (int)HttpStatusCode.InternalServerError)]
+    [ProducesResponseType(typeof(ValidationErrorResponse), (int)HttpStatusCode.BadRequest)]
+    [ProducesResponseType(typeof(ProductResultDTO), (int)HttpStatusCode.OK)]
+
     public class ProductsController(IServiceManager ServiceManager) : ControllerBase
     {
         [HttpGet]
@@ -27,7 +34,7 @@ namespace Presentation
             var types = await ServiceManager.ProductService.GetAllTypesAsync();
             return Ok(types);
         }
-        
+
         [HttpGet("{id}")]
         public async Task<ActionResult<ProductResultDTO>> GetProduct(int id)
         {
