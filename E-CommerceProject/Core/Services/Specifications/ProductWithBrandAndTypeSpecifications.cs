@@ -1,5 +1,6 @@
 ﻿using Domain.Contracts;
 using Domain.Entities;
+using Shared;
 
 namespace Services.Specifications
 {
@@ -14,29 +15,34 @@ namespace Services.Specifications
         }
 
         // use to get All Products
-        public ProductWithBrandAndTypeSpecifications(string? sort, int? brandId, int? typeId)
+        public ProductWithBrandAndTypeSpecifications(ProductSpecificationsParameters parameters)
             : base(product =>
-            (!brandId.HasValue || product.BrandId == brandId.Value) &&
-            (!typeId.HasValue || product.TypeId == typeId.Value))
+            (!parameters.BrandId.HasValue || product.BrandId == parameters.BrandId.Value) &&
+            (!parameters.TypeId.HasValue || product.TypeId == parameters.TypeId.Value) &&
+            (string.IsNullOrWhiteSpace(parameters.Search) || product.Name.ToLower().Contains(parameters.Search.ToLower().Trim())))
         {
             AddInclude(Product => Product.ProductBrand);
             AddInclude(product => product.ProductType);
 
-            if (!string.IsNullOrWhiteSpace(sort))
+            ApplyPagination(parameters.pageIndex , parameters.pageSize);
+
+            if (parameters.Sort is not null)
             {
-                switch (sort.ToLower().Trim())
+                switch (parameters.Sort)
                 {
-                    case "pricedesc":
-                            SetOrderByDescending(p => p.Price);
-                        break;
-                    case "priceasc":
-                            SetOrderBy(p => p.Price);
-                        break;
-                    case "namedesc":
+                    case ProductSortingOptions.NameDesc:
                             SetOrderByDescending(p => p.Name);
                         break;
+                    case ProductSortingOptions.NameAsc:
+                            SetOrderBy(p => p.Name);
+                        break;
+                    case ProductSortingOptions.PriceDesc:
+                            SetOrderByDescending(p => p.Price);
+                        break;
+                    case ProductSortingOptions.PriceAsc:
+                            SetOrderBy(p => p.Price);
+                        break;
                     default:
-                        SetOrderBy(p => p.Name);
                         break;
                 }
             }
