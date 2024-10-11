@@ -6,7 +6,7 @@ namespace E_Commerce.API.Factories
 {
     public class ApiResponseFactory
     {
-        public static IAsyncResult CustomValidationErrorResponse(ActionContext context)
+        public static IActionResult CustomValidationErrorResponse(ActionContext context)
         {
             // get all Errors in Model state
             var errors = context.ModelState.Where(error => error.Value.Errors.Any())
