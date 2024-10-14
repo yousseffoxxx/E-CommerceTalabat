@@ -7,12 +7,8 @@ namespace Presentation
 {
     [ApiController]
     [Route("api/[controller]")]
-    [ProducesResponseType(typeof(ErrorDetails), (int)HttpStatusCode.NotFound)]
-    [ProducesResponseType(typeof(ErrorDetails), (int)HttpStatusCode.InternalServerError)]
-    [ProducesResponseType(typeof(ValidationErrorResponse), (int)HttpStatusCode.BadRequest)]
-    [ProducesResponseType(typeof(ProductResultDTO), (int)HttpStatusCode.OK)]
 
-    public class ProductsController(IServiceManager ServiceManager) : ControllerBase
+    public class ProductsController(IServiceManager ServiceManager) : ApiController
     {
         [HttpGet]
         public async Task<ActionResult<PaginatedResult<ProductResultDTO>>> GetAllProducts([FromQuery]ProductSpecificationsParameters parameters)
