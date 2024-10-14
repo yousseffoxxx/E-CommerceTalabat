@@ -32,7 +32,7 @@ namespace E_Commerce.API
 
             await app.SeedDbAsync();
 
-            app.UsecustomExceptionMiddleWare();
+            app.UseCustomExceptionMiddleWare();
 
             if (app.Environment.IsDevelopment())
             {

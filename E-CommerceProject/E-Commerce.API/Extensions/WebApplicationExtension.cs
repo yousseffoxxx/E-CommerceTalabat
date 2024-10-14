@@ -19,7 +19,7 @@ namespace E_Commerce.API.Extensions
             return app;
         }
 
-        public static WebApplication UsecustomExceptionMiddleWare(this WebApplication app)
+        public static WebApplication UseCustomExceptionMiddleWare(this WebApplication app)
         {
             app.UseMiddleware<GlobalErrorHandlingMiddleware>();
 
