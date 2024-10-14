@@ -12,7 +12,7 @@ using Services.Abstractions;
 
 namespace E_Commerce.API
 {
-    public class Program 
+    public class Program
     {
         public static async Task Main(string[] args)
         {

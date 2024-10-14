@@ -2,9 +2,10 @@
 using Persistence.Data;
 using Persistence.Repositories;
 using Persistence;
+using E_Commerce.API.Factories;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using StackExchange.Redis;
-using Persistence.Identity;
 
 namespace E_Commerce.API.Extensions
 {
@@ -20,14 +21,10 @@ namespace E_Commerce.API.Extensions
             {
                 options.UseSqlServer(configuration.GetConnectionString("DefaultSQLConnection"));
             });
-            services.AddDbContext<StoreIdentityContext>(options =>
-            {
-                options.UseSqlServer(configuration.GetConnectionString("IdentitySQLConnection"));
-            });
 
-            services.AddSingleton<IConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));
+            services.AddSingleton<ConnectionMultiplexer>(_ => ConnectionMultiplexer.Connect(configuration.GetConnectionString("Redis")));
 
             return services;
         }
-    }     
+    }
 }
