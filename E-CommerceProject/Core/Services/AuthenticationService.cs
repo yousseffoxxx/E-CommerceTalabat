@@ -1,18 +1,18 @@
 ﻿using Domain.Entities;
 using Domain.Exceptions;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Options;
+using Microsoft.IdentityModel.Tokens;
 using Services.Abstractions;
 using Shared;
 using Shared.ErrorModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Services
 {
-    public class AuthenticationService(UserManager<User> UserManager) : IAuthenticationService
+    public class AuthenticationService(UserManager<User> UserManager , IOptions<JwtOptions> options) : IAuthenticationService
     {
         public async Task<UserResultDTO> LoginAsync(LoginDTO loginModel)
         {
@@ -28,13 +28,12 @@ namespace Services
             return new UserResultDTO(
                 user.DisplayName,
                 user.Email,
-                "Token");
+                await CreateTokenAsync(user));
 
         }
 
         public async Task<UserResultDTO> RegisterAsync(UserRegisterDTO registerModel)
         {
-
             var user = new User()
             {
                 Email = registerModel.Email,
@@ -55,8 +54,37 @@ namespace Services
             return new UserResultDTO(
                 user.DisplayName,
                 user.Email,
-                "Token");
+                await CreateTokenAsync(user));
 
+        }
+    
+        private async Task<string> CreateTokenAsync(User user)
+        {
+            var jwtOptions = options.Value;
+            // private claims
+            var authClaims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name ,user.UserName!),
+                new Claim(ClaimTypes.Email ,user.Email!)
+            };
+
+            // Add Roles To claims if Exist
+            var roles = await UserManager.GetRolesAsync(user);
+
+            foreach (var role in roles)
+                authClaims.Add(new Claim(ClaimTypes.Role, role));
+
+            var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtOptions.SecretKey));
+            var signingCreds = new SigningCredentials(key , SecurityAlgorithms.HmacSha256);
+
+            var token = new JwtSecurityToken(
+                audience: jwtOptions.Audience,
+                issuer: jwtOptions.Issure,
+                expires: DateTime.UtcNow.AddDays(jwtOptions.DurationInDays),
+                claims: authClaims,
+                signingCredentials: signingCreds);
+
+            return new JwtSecurityTokenHandler().WriteToken(token);
         }
     }
 }
