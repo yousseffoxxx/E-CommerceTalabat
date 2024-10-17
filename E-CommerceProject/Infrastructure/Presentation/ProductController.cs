@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Services.Abstractions;
 using Shared;
 using Shared.ErrorModels;
@@ -7,12 +8,8 @@ namespace Presentation
 {
     [ApiController]
     [Route("api/[controller]")]
-    [ProducesResponseType(typeof(ErrorDetails), (int)HttpStatusCode.NotFound)]
-    [ProducesResponseType(typeof(ErrorDetails), (int)HttpStatusCode.InternalServerError)]
-    [ProducesResponseType(typeof(ValidationErrorResponse), (int)HttpStatusCode.BadRequest)]
-    [ProducesResponseType(typeof(ProductResultDTO), (int)HttpStatusCode.OK)]
-
-    public class ProductsController(IServiceManager ServiceManager) : ControllerBase
+    [Authorize]
+    public class ProductsController(IServiceManager ServiceManager) : ApiController
     {
         [HttpGet]
         public async Task<ActionResult<PaginatedResult<ProductResultDTO>>> GetAllProducts([FromQuery]ProductSpecificationsParameters parameters)

@@ -11,7 +11,6 @@
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(StoreContext).Assembly);
         }
 
-
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }
         public DbSet<ProductType> ProductTypes { get; set; }

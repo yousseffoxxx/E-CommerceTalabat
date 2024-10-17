@@ -12,7 +12,7 @@ using Services.Abstractions;
 
 namespace E_Commerce.API
 {
-    public class Program
+    public class Program 
     {
         public static async Task Main(string[] args)
         {
@@ -20,7 +20,7 @@ namespace E_Commerce.API
 
             #region Servics
 
-            builder.Services.AddCoreServices();
+            builder.Services.AddCoreServices(builder.Configuration);
             builder.Services.AddInfraStructureServices(builder.Configuration);
             builder.Services.AddPresentationServices();
 
@@ -32,7 +32,7 @@ namespace E_Commerce.API
 
             await app.SeedDbAsync();
 
-            app.UsecustomExceptionMiddleWare();
+            app.UseCustomExceptionMiddleWare();
 
             if (app.Environment.IsDevelopment())
             {
@@ -42,6 +42,7 @@ namespace E_Commerce.API
 
             app.UseStaticFiles();
             app.UseHttpsRedirection();
+            app.UseAuthentication();
             app.UseAuthorization();
             app.MapControllers();
             app.Run();
