@@ -14,12 +14,12 @@ namespace Domain.Entities.OrderEntities
         }
         public ProductInOrderItem(int productid, string productName, string pictureUrl)
         {
-            Productid = productid;
+            ProductId = productid;
             ProductName = productName;
             PictureUrl = pictureUrl;
         }
 
-        public int Productid { get; set; }
+        public int ProductId { get; set; }
         public string ProductName { get; set; }
         public string PictureUrl { get; set; }
 
