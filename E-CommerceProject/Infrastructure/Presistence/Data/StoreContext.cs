@@ -1,4 +1,6 @@
-﻿namespace Persistence.Data
+﻿using Domain.Entities.ProductEntities;
+
+namespace Persistence.Data
 {
     public class StoreContext : DbContext
     {
@@ -10,6 +12,7 @@
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(StoreContext).Assembly);
         }
+
 
         public DbSet<Product> Products { get; set; }
         public DbSet<ProductBrand> ProductBrands { get; set; }

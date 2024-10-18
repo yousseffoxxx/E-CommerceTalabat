@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Entities;
+using Domain.Entities.ProductEntities;
 using Microsoft.Extensions.Configuration;
 using Shared;
 using static System.Net.WebRequestMethods;

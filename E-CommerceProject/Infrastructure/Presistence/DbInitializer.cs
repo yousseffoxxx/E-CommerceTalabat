@@ -1,6 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Domain.Entities.ProductEntities;
 using Persistence.Data;
-using System.Runtime.CompilerServices;
 using System.Text.Json;
 
 namespace Persistence
@@ -8,16 +7,10 @@ namespace Persistence
     public class DbInitializer : IDbInitializer
     {
         private readonly StoreContext _storeContext;
-        private readonly UserManager<User> _userManger;
-        private readonly RoleManager<IdentityRole> _roleManger;
 
-        public DbInitializer(StoreContext storeContext,
-            UserManager<User> userManger,
-            RoleManager<IdentityRole> roleManger)
+        public DbInitializer(StoreContext storeContext)
         {
             _storeContext = storeContext;
-            _userManger = userManger;
-            _roleManger = roleManger;
         }
 
         public async Task InitializeAsync()
@@ -83,42 +76,6 @@ namespace Persistence
             catch (Exception)
             {
                 throw;
-            }
-        }
-
-        public async Task InitializeIdentityAsync()
-        {
-            // seed Default roles
-            if (!_roleManger.Roles.Any())
-            { 
-                await _roleManger.CreateAsync(new IdentityRole("SuperAdmin"));
-                await _roleManger.CreateAsync(new IdentityRole("Admin"));
-            }
-            // Seed Default Users
-
-            if (!_userManger.Users.Any())
-            {
-                var superAdminUser = new User
-                {
-                    DisplayName = "super Admin User",
-                    Email = "superAdminUser@Gmail.com",
-                    UserName = "superAdminUser",
-                    PhoneNumber = "123456789",
-                };
-
-                var AdminUser = new User
-                {
-                    DisplayName = "Admin User",
-                    Email = "AdminUser@Gmail.com",
-                    UserName = "AdminUser",
-                    PhoneNumber = "24682468",
-                };
-
-                await _userManger.CreateAsync(superAdminUser , "password");
-                await _userManger.CreateAsync(AdminUser , "password");
-
-                await _userManger.AddToRoleAsync(superAdminUser , "SuperAdmin");
-                await _userManger.AddToRoleAsync(AdminUser , "Admin");
             }
         }
     }

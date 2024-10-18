@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Contracts;
-using Domain.Entities;
+using Domain.Entities.ProductEntities;
 using Domain.Exceptions;
 using Services.Abstractions;
 using Services.Specifications;
@@ -13,7 +13,7 @@ namespace Services
     {
         public async Task<IEnumerable<BrandResultDTO>> GetAllBrandsAsync()
         {
-            // 1. Retrieve all Brands => unitofwork
+            // 1. Retrieve all Brands => unitOfWork
             var brands = await UnitOfWork.GetRepository<ProductBrand, int>().GetAllAsync();
             // 2. Map to brand Result TDO => IMapper
             var brandsResult = Mapper.Map<IEnumerable<BrandResultDTO>>(brands);

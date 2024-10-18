@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Domain.Entities;
+using Domain.Entities.BasketEntities;
 using Shared;
 using System;
 using System.Collections.Generic;

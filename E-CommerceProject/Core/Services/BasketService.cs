@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Domain.Contracts;
-using Domain.Entities;
+using Domain.Entities.BasketEntities;
 using Domain.Exceptions;
 using Services.Abstractions;
 using Shared;
@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace Services
-{ 
+{
     public class BasketService(IBasketRepository basketRepository , IMapper mapper)
         : IBasketService
     {

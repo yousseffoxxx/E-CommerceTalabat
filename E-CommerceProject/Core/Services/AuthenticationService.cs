@@ -1,4 +1,4 @@
-﻿using Domain.Entities;
+﻿using Domain.Entities.UserEntities;
 using Domain.Exceptions;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;

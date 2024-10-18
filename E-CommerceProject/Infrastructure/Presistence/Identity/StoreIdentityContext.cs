@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Domain.Entities.UserEntities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Persistence.Identity
 {
