@@ -11,6 +11,7 @@ using Shared;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using Domain.Entities.UserEntities;
 
 namespace E_Commerce.API.Extensions
 {
