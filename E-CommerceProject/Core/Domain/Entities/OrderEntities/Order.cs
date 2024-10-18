@@ -31,7 +31,7 @@ namespace Domain.Entities.OrderEntities
         // Address
         public OrderAddress ShippingAddress { get; set; }
         // order Items
-        public ICollection<OrderItem> OrderItems { get; set; } // Collection Navigational Prop
+        public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>(); // Collection Navigational Prop
         // Payment Status
         public OrderPaymentStatus PaymentStatus { get; set; } = OrderPaymentStatus.Pending;
         // Delivery Method
