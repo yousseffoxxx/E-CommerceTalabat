@@ -18,7 +18,7 @@ namespace Domain.Entities.OrderEntities
             DeliveryMethod deliveryMethod,
             decimal subTotal)
         {
-            id = Guid.NewGuid();
+            Id = Guid.NewGuid();
             UserEmail = userEmail;
             ShippingAddress = shippingAddress;
             OrderItems = orderItems;

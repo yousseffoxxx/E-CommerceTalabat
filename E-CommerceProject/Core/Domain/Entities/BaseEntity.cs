@@ -8,6 +8,6 @@ namespace Domain.Entities
 {
     public abstract class BaseEntity<TKey>
     {
-        public TKey id { get; set; }
+        public TKey Id { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace Services.Specifications
     {
         // Use to retrieve Id
         public ProductWithBrandAndTypeSpecifications(int id) 
-            : base(product => product.id == id)
+            : base(product => product.Id == id)
         {
             AddInclude(Product => Product.ProductBrand);
             AddInclude(product => product.ProductType);
