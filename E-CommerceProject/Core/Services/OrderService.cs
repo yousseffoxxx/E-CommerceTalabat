@@ -5,6 +5,7 @@ using Domain.Entities.OrderEntities;
 using Domain.Entities.ProductEntities;
 using Domain.Exceptions;
 using Services.Abstractions;
+using Services.Specifications;
 using Shared.OrderModels;
 
 namespace Services
@@ -56,20 +57,31 @@ namespace Services
             => new OrderItem(new ProductInOrderItem(product.Id, product.Name, product.PictureUrl),
                 item.Quantity, product.Price);
 
-        public Task<IEnumerable<DeliveryMethodResult>> GetDeliveryMethodsAsync()
+        public async Task<IEnumerable<DeliveryMethodResult>> GetDeliveryMethodsAsync()
         {
+            var methods = await unitOfWork.GetRepository<DeliveryMethod, int>()
+                .GetAllAsync();
+            return mapper.Map<IEnumerable<DeliveryMethodResult>>(methods);
+        }
+        
+        public async Task<OrderResult> GetOrderByIdAsync(Guid id)
+        {
+            var order = await unitOfWork.GetRepository<Order, Guid>()
+                .GetAsync(new OrderWithIncludeSpecifications(id))
+                ?? throw new OrderNotFoundException(id);
+
+            return mapper.Map<OrderResult>(order);
 
         }
 
-        public Task<IEnumerable<OrderResult>> GetOrderByEmail(string email)
+        public async Task<IEnumerable<OrderResult>> GetOrderByEmailAsync(string email)
         {
+            var orders = await unitOfWork.GetRepository<Order, Guid>()
+                .GetAllAsync(new OrderWithIncludeSpecifications(email));
+               
+            return mapper.Map<IEnumerable<OrderResult>>(orders);
 
         }
 
-        public Task<OrderResult> GetOrderById(Guid id)
-        {
-
-
-        }
     }
 }
