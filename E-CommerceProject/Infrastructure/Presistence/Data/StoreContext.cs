@@ -1,7 +1,4 @@
-﻿using Domain.Entities.OrderEntities;
-using Domain.Entities.ProductEntities;
-
-namespace Persistence.Data
+﻿namespace Persistence.Data
 {
     public class StoreContext : DbContext
     {

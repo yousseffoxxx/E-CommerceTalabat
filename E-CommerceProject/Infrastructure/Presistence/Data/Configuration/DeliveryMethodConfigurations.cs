@@ -1,6 +1,4 @@
-﻿using Domain.Entities.OrderEntities;
-
-namespace Persistence.Data.Configuration
+﻿namespace Persistence.Data.Configuration
 {
     internal class DeliveryMethodConfigurations : IEntityTypeConfiguration<DeliveryMethod>
     {

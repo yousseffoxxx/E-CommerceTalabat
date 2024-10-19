@@ -1,11 +1,4 @@
-﻿using Domain.Entities.OrderEntities;
-using Domain.Entities.ProductEntities;
-using Domain.Entities.UserEntities;
-using Microsoft.AspNetCore.Identity;
-using Persistence.Data;
-using System.Text.Json;
-
-namespace Persistence
+﻿namespace Persistence
 {
     public class DbInitializer : IDbInitializer
     {

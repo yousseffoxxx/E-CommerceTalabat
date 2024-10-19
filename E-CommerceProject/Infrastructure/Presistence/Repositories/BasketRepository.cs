@@ -1,8 +1,4 @@
-﻿using Domain.Entities.BasketEntities;
-using StackExchange.Redis;
-using System.Text.Json;
-
-namespace Persistence.Repositories
+﻿namespace Persistence.Repositories
 {
     public class BasketRepository(IConnectionMultiplexer connectionMultiplexer)
         : IBasketRepository

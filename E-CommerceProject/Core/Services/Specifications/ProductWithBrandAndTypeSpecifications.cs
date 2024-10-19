@@ -1,8 +1,4 @@
-﻿using Domain.Contracts;
-using Domain.Entities.ProductEntities;
-using Shared;
-
-namespace Services.Specifications
+﻿namespace Services.Specifications
 {
     public class ProductWithBrandAndTypeSpecifications : Specifications<Product>
     {

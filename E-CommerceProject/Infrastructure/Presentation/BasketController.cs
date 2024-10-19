@@ -1,13 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Services.Abstractions;
-using Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Presentation
+﻿namespace Presentation
 {
     public class BasketController(IServiceManager serviceManager)
         : ApiController

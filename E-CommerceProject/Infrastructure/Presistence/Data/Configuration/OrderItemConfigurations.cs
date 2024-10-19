@@ -1,11 +1,4 @@
-﻿using Domain.Entities.OrderEntities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Persistence.Data.Configuration
+﻿namespace Persistence.Data.Configuration
 {
     internal class OrderItemConfigurations : IEntityTypeConfiguration<OrderItem>
     {

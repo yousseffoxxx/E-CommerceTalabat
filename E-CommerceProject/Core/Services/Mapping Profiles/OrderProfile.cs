@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Domain.Entities.OrderEntities;
-using Shared.OrderModels;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Services.Mapping_Profiles
+﻿namespace Services.Mapping_Profiles
 {
     internal class OrderProfile : Profile
     {

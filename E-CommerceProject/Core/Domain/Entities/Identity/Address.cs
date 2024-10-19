@@ -1,6 +1,4 @@
-﻿using System.Data;
-
-namespace Domain.Entities.UserEntities
+﻿namespace Domain.Entities.UserEntities
 {
     public class Address
     {

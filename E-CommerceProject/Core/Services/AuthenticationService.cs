@@ -1,16 +1,4 @@
-﻿using Domain.Entities.UserEntities;
-using Domain.Exceptions;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Tokens;
-using Services.Abstractions;
-using Shared;
-using Shared.ErrorModels;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-
-namespace Services
+﻿namespace Services
 {
     public class AuthenticationService(UserManager<User> UserManager , IOptions<JwtOptions> options) : IAuthenticationService
     {

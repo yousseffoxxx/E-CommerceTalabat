@@ -1,7 +1,4 @@
-﻿using Domain.Entities.UserEntities;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-
-namespace Persistence.Identity
+﻿namespace Persistence.Identity
 {
     public class StoreIdentityContext : IdentityDbContext
     {

@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Domain.Contracts;
-using Domain.Entities.ProductEntities;
-using Domain.Exceptions;
-using Services.Abstractions;
-using Services.Specifications;
-using Shared;
+﻿using Services.Specifications;
 
 namespace Services
 {

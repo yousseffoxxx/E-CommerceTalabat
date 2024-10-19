@@ -3,6 +3,7 @@ using Services;
 using E_Commerce.API.Factories;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
+using Presentation.AssemblyReference;
 
 namespace E_Commerce.API.Extensions
 {
@@ -10,7 +11,7 @@ namespace E_Commerce.API.Extensions
     {
         public static IServiceCollection AddPresentationServices(this IServiceCollection services)
         {
-            services.AddControllers().AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+            services.AddControllers().AddApplicationPart(typeof(AssemblyReference).Assembly);
 
             services.Configure<ApiBehaviorOptions>(options =>
             {

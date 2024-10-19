@@ -1,13 +1,4 @@
-﻿using AutoMapper;
-using Domain.Contracts;
-using Domain.Entities;
-using Domain.Entities.UserEntities;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.Extensions.Options;
-using Services.Abstractions;
-using Shared;
-
-namespace Services
+﻿namespace Services
 {
     public class ServiceManager : IServiceManager
     {
