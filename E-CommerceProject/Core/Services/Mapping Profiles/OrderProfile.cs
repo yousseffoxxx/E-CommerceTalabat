@@ -27,6 +27,8 @@
                 options => options.MapFrom(s => s.SubTotal + s.DeliveryMethod.Price));
 
             CreateMap<DeliveryMethod, DeliveryMethodResult>();
+
+            CreateMap<AddressDTO, Address>().ReverseMap();
         }
     }
 }
