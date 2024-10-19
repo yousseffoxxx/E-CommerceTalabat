@@ -14,7 +14,7 @@ namespace Services.Specifications
         public OrderWithIncludeSpecifications(Guid id)
             : base(order => order.Id == id)
         {
-            AddInclude(order => order.DeliveryMethodId);
+            AddInclude(order => order.DeliveryMethod);
 
             AddInclude(order => order.OrderItems);
         }
@@ -22,7 +22,7 @@ namespace Services.Specifications
         public OrderWithIncludeSpecifications(string email)
             : base(order => order.UserEmail == email)
         {
-            AddInclude(order => order.DeliveryMethodId);
+            AddInclude(order => order.DeliveryMethod);
 
             AddInclude(order => order.OrderItems);
 

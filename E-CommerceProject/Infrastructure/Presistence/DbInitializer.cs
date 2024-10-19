@@ -1,4 +1,5 @@
-﻿using Domain.Entities.ProductEntities;
+﻿using Domain.Entities.OrderEntities;
+using Domain.Entities.ProductEntities;
 using Domain.Entities.UserEntities;
 using Microsoft.AspNetCore.Identity;
 using Persistence.Data;
@@ -42,7 +43,6 @@ namespace Persistence
                         await _storeContext.ProductTypes.AddRangeAsync(types);
                         await _storeContext.SaveChangesAsync();
                     }
-
                 }
 
                 if (!_storeContext.ProductBrands.Any())
@@ -59,7 +59,6 @@ namespace Persistence
                         await _storeContext.ProductBrands.AddRangeAsync(brands);
                         await _storeContext.SaveChangesAsync();
                     }
-
                 }
 
                 if (!_storeContext.Products.Any())
@@ -76,7 +75,22 @@ namespace Persistence
                         await _storeContext.Products.AddRangeAsync(products);
                         await _storeContext.SaveChangesAsync();
                     }
+                }
 
+                if (!_storeContext.DeliveryMethods.Any())
+                {
+                    // Read Types from Files
+                    var Data = await File.ReadAllTextAsync(@"..\Infrastructure\Presistence\Data\Seeding\delivery.json");
+                
+                    // Transform into C# objects
+                    var methods = JsonSerializer.Deserialize<List<DeliveryMethod>>(Data);
+
+                    // Add to DB & save Changes
+                    if(methods is not null && methods.Any())
+                    {
+                        await _storeContext.DeliveryMethods.AddRangeAsync(methods);
+                        await _storeContext.SaveChangesAsync();
+                    }
                 }
             }
             catch (Exception)
