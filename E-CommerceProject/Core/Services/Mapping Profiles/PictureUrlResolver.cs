@@ -1,10 +1,4 @@
-﻿using AutoMapper;
-using Domain.Entities;
-using Microsoft.Extensions.Configuration;
-using Shared;
-using static System.Net.WebRequestMethods;
-
-namespace Services.Mapping_Profiles
+﻿namespace Services.Mapping_Profiles
 {
     public class PictureUrlResolver(IConfiguration configuration) : IValueResolver<Product, ProductResultDTO, string>
     {

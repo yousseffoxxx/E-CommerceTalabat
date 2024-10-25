@@ -1,10 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Services.Abstractions;
-using Shared;
-using Shared.ErrorModels;
-using System.Net;
-namespace Presentation
+﻿namespace Presentation
 {
     [ApiController]
     [Route("api/[controller]")]

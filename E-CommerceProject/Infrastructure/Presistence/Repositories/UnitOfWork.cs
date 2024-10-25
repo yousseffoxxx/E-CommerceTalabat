@@ -1,7 +1,4 @@
-﻿global using Persistence.Data;
-global using System.Collections.Concurrent;
-
-namespace Persistence.Repositories
+﻿namespace Persistence.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

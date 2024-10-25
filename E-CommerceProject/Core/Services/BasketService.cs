@@ -1,17 +1,5 @@
-﻿using AutoMapper;
-using Domain.Contracts;
-using Domain.Entities;
-using Domain.Exceptions;
-using Services.Abstractions;
-using Shared;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Services
-{ 
+﻿namespace Services
+{
     public class BasketService(IBasketRepository basketRepository , IMapper mapper)
         : IBasketService
     {

@@ -1,14 +1,10 @@
-﻿using Domain.Contracts;
-using Domain.Entities;
-using Shared;
-
-namespace Services.Specifications
+﻿namespace Services.Specifications
 {
     public class ProductWithBrandAndTypeSpecifications : Specifications<Product>
     {
         // Use to retrieve Id
         public ProductWithBrandAndTypeSpecifications(int id) 
-            : base(product => product.id == id)
+            : base(product => product.Id == id)
         {
             AddInclude(Product => Product.ProductBrand);
             AddInclude(product => product.ProductType);

@@ -1,8 +1,4 @@
-﻿using Domain.Contracts;
-using Domain.Entities;
-using Shared;
-
-namespace Services.Specifications
+﻿namespace Services.Specifications
 {
     internal class ProductCountSpecifications : Specifications<Product>
     {

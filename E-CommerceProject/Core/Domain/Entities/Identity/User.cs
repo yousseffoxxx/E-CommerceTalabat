@@ -1,6 +1,4 @@
-﻿using Microsoft.AspNetCore.Identity;
-
-namespace Domain.Entities
+﻿namespace Domain.Entities.UserEntities
 {
     public class User : IdentityUser
     {
