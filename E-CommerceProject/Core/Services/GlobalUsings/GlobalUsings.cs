@@ -19,3 +19,4 @@ global using System.Text;
 global using Microsoft.EntityFrameworkCore;
 global using Stripe;
 global using Product = Domain.Entities.ProductEntities.Product;
+global using Address = Domain.Entities.UserEntities.Address;

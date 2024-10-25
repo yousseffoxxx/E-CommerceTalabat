@@ -6,7 +6,7 @@ namespace Services
         IMapper mapper ,
         IBasketRepository basketRepository): IOrderService
     {
-        public async Task<OrderResult> CreateOrderAsync(OrderRequest request, string userEmail)
+        public async Task<OrderResult> CreateOrUpdateOrderAsync(OrderRequest request, string userEmail)
         {
             // 1. Address
             var address = mapper.Map<OrderAddress>(request.ShippingAddress);
@@ -25,6 +25,13 @@ namespace Services
                 orderItems.Add(CreateOrderItem(item, product));
             }
 
+            var orderRepo = unitOfWork.GetRepository<Order, Guid>();
+
+            var existingOrder = await orderRepo.GetAsync(new OrderWithPaymentIntentIdSpecifications(basket.PaymentIntentId));
+
+            if (existingOrder is not null)
+                orderRepo.Delete(existingOrder);
+
             // 3. Delivery
             var deliveryMethod = await unitOfWork.GetRepository<DeliveryMethod, int>()
                 .GetAsync(request.DeliveryMethodId) ?? throw new DeliveryMethodIdNotFoundException(request.DeliveryMethodId);
@@ -33,10 +40,9 @@ namespace Services
             var subTotal = orderItems.Sum(item => item.Price * item.Quantity);
 
             // 5. Save To Db
-            var order = new Order(userEmail, address, orderItems, deliveryMethod , subTotal);
+            var order = new Order(userEmail, address, orderItems, deliveryMethod , subTotal, basket.PaymentIntentId);
             
-            await unitOfWork.GetRepository<Order , Guid>()
-                .AddAsync(order);
+            await orderRepo.AddAsync(order);
 
             await unitOfWork.SaveChangesAsync();
 
