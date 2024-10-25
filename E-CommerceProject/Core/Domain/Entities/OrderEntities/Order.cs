@@ -10,7 +10,8 @@
             OrderAddress shippingAddress,
             ICollection<OrderItem> orderItems,
             DeliveryMethod deliveryMethod,
-            decimal subTotal)
+            decimal subTotal,
+            string paymentIntentId)
         {
             Id = Guid.NewGuid();
             UserEmail = userEmail;
@@ -18,6 +19,7 @@
             OrderItems = orderItems;
             DeliveryMethod = deliveryMethod;
             SubTotal = subTotal;
+            PaymentIntentId = paymentIntentId;
         }
 
         // user Email
@@ -34,7 +36,7 @@
         //subTotal => Items.Q * Price
         public decimal SubTotal { get; set; }
         // Payment
-        public string PaymentIntentId { get; set; } = string.Empty;
+        public string PaymentIntentId { get; set; }
         //OrderDate
         public DateTimeOffset OrderDate { get; set; } = DateTimeOffset.Now;
     }

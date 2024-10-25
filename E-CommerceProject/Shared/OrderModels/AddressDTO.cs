@@ -2,7 +2,7 @@
 {
     public record AddressDTO
     {
-        public string FristName { get; init; }
+        public string FirstName { get; init; }
         public string LastName { get; init; }
         public string Street { get; init; }
         public string City { get; init; }

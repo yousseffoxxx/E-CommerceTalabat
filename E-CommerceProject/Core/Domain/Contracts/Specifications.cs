@@ -6,7 +6,7 @@
         public List<Expression<Func<T, object>>>? IncludeExpressions { get; } = new();
         public Expression<Func<T, object>> OrderBy { get; private set; }
         public Expression<Func<T, object>> OrderByDescending { get; private set; }
-        public bool IsPAginated { get; private set; }
+        public bool IsPaginated { get; private set; }
         public int Skip { get; private set; }
         public int Take { get; private set; }
         protected Specifications(Expression<Func<T, bool>>? criteria)
@@ -23,7 +23,7 @@
 
         protected void ApplyPagination(int PAgeIndex ,int PageSize)
         {
-            IsPAginated = true;
+            IsPaginated = true;
 
             Take = PageSize;
             Skip = (PAgeIndex - 1) * PageSize;
