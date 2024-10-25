@@ -22,11 +22,11 @@
                 item.Price = product.Price;
             }
 
-            if (!basket.DeliveryMethod.HasValue) throw new DeliveryMethodIdNotFoundException();
+            if (!basket.DeliveryMethodId.HasValue) throw new DeliveryMethodIdNotFoundException();
 
             var method = await unitOfWork.GetRepository<DeliveryMethod, int>()
-                .GetAsync(basket.DeliveryMethod.Value)
-                ?? throw new DeliveryMethodIdNotFoundException(basket.DeliveryMethod.Value);
+                .GetAsync(basket.DeliveryMethodId.Value)
+                ?? throw new DeliveryMethodIdNotFoundException(basket.DeliveryMethodId.Value);
 
             basket.ShippingPrice = method.Price;
 

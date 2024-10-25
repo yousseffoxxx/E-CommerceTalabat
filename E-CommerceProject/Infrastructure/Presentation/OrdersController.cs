@@ -8,7 +8,7 @@
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
 
-            var order = await serviceManager.OrderService.CreateOrderAsync(request, email);
+            var order = await serviceManager.OrderService.CreateOrUpdateOrderAsync(request, email);
 
             return Ok(order);
         }
