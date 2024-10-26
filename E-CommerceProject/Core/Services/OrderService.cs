@@ -9,7 +9,7 @@ namespace Services
         public async Task<OrderResult> CreateOrUpdateOrderAsync(OrderRequest request, string userEmail)
         {
             // 1. Address
-            var address = mapper.Map<OrderAddress>(request.ShippingAddress);
+            var address = mapper.Map<OrderAddress>(request.ShipToAddress);
             
             // 2. OrderItems => Basket => BasketItems => OrderItems
             var basket = await basketRepository.GetBasketAsync(request.BasketId)

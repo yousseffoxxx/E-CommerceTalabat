@@ -41,6 +41,7 @@ namespace E_Commerce.API
             }
 
             app.UseStaticFiles();
+            app.UseCors("CORSPolicy");
             app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseAuthorization();
