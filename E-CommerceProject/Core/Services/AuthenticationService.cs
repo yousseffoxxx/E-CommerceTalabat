@@ -121,7 +121,7 @@
 
             if (user.Address != null)
             {
-                user.Address.FristName = address.FristName;
+                user.Address.FirstName = address.FirstName;
                 user.Address.LastName = address.LastName;
                 user.Address.Street = address.Street;
                 user.Address.City = address.City;

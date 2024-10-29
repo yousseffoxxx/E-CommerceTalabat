@@ -19,6 +19,16 @@ namespace E_Commerce.API.Extensions
             });
 
             services.ConfigureSwaggerService();
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CORSPolicy", builder =>
+                {
+                    builder.AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowAnyOrigin();
+
+                });
+            });
             return services;
         }
 
