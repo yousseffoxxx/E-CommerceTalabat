@@ -1,4 +1,6 @@
-﻿namespace Presentation
+﻿using Shared.AuthModels;
+
+namespace Presentation
 {
     public class AuthenticationController(IServiceManager serviceManager) : ApiController
     {
@@ -26,7 +28,7 @@
 
         [Authorize]
         [HttpGet]
-        public async Task<ActionResult<UserResultDTO>> GetCurretUser()
+        public async Task<ActionResult<UserResultDTO>> GetCurrentUser()
         {
             var email = User.FindFirstValue(ClaimTypes.Email);
 

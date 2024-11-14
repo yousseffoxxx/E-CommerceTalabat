@@ -1,4 +1,4 @@
-﻿namespace Shared
+﻿namespace Shared.ProductModels
 {
     public enum ProductSortingOptions
     {
@@ -17,10 +17,10 @@
         public ProductSortingOptions? Sort { get; set; }
         public int pageIndex { get; set; } = 1;
         private int _pageSize = DEFAULTPAGESIZE;
-        public int pageSize 
+        public int pageSize
         {
             get => _pageSize;
-            set => _pageSize = value > MAXPAGESIZE ? MAXPAGESIZE : value;  
+            set => _pageSize = value > MAXPAGESIZE ? MAXPAGESIZE : value;
         }
         public string? Search { get; set; }
     }

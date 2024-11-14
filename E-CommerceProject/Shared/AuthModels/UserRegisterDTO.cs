@@ -1,4 +1,4 @@
-﻿namespace Shared
+﻿namespace Shared.AuthModels
 {
     public record UserRegisterDTO
     {

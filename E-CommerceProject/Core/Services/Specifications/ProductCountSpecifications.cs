@@ -1,4 +1,6 @@
-﻿namespace Services.Specifications
+﻿using Shared.ProductModels;
+
+namespace Services.Specifications
 {
     internal class ProductCountSpecifications : Specifications<Product>
     {

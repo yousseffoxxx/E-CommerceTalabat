@@ -1,4 +1,6 @@
-﻿namespace Presentation
+﻿using Shared.BasketModels;
+
+namespace Presentation
 {
     public class BasketController(IServiceManager serviceManager)
         : ApiController

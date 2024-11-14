@@ -1,4 +1,4 @@
-﻿namespace Shared
+﻿namespace Shared.BasketModels
 {
     public record BasketDTO
     {

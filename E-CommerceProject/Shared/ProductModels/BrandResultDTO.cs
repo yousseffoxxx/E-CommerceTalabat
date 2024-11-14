@@ -1,4 +1,4 @@
-﻿namespace Shared
+﻿namespace Shared.ProductModels
 {
     public record BrandResultDTO
     {

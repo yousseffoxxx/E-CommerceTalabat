@@ -1,4 +1,6 @@
-﻿namespace Services
+﻿using Shared.BasketModels;
+
+namespace Services
 {
     public class BasketService(IBasketRepository basketRepository , IMapper mapper)
         : IBasketService

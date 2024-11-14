@@ -1,4 +1,6 @@
-﻿namespace Services.Abstractions
+﻿using Shared.BasketModels;
+
+namespace Services.Abstractions
 {
     public interface IBasketService
     {

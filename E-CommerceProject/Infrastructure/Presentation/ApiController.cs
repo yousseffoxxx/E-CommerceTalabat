@@ -1,4 +1,6 @@
-﻿namespace Presentation
+﻿using Shared.ProductModels;
+
+namespace Presentation
 {
     [ApiController]
     [Route("api/[controller]")]

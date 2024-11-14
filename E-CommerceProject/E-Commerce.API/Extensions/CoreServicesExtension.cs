@@ -1,7 +1,7 @@
 ﻿using Services;
 using Services.Abstractions;
 using Services.AssemblyReference;
-using Shared;
+using Shared.AuthModels;
 
 namespace E_Commerce.API.Extensions
 {
