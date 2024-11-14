@@ -1,4 +1,6 @@
-﻿namespace Presentation
+﻿using Shared.BasketModels;
+
+namespace Presentation
 {
     public class PaymentController (IServiceManager serviceManager)
         : ApiController
@@ -16,7 +18,7 @@
         {
             var json = await new StreamReader(HttpContext.Request.Body).ReadToEndAsync();
 
-            await serviceManager.PaymentService.UpdateOrderPaymentStatus(json, Request.Headers["Stripe-Signature"]);
+            await serviceManager.PaymentService.UpdateOrderPaymentStatus(json, Request.Headers["Stripe-Signature"]!);
 
             return new EmptyResult();
         }

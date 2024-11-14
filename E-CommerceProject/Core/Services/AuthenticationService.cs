@@ -1,4 +1,6 @@
-﻿namespace Services
+﻿using Shared.AuthModels;
+
+namespace Services
 {
     public class AuthenticationService(UserManager<User> userManager ,
         IOptions<JwtOptions> options, IMapper mapper) : IAuthenticationService

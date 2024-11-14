@@ -1,4 +1,5 @@
 ﻿using Services.Specifications;
+using Shared.ProductModels;
 
 namespace Services
 {

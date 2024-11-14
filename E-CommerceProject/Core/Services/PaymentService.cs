@@ -1,4 +1,5 @@
 ﻿global using Services.Specifications;
+using Shared.BasketModels;
 using Stripe.Forwarding;
 
 namespace Services

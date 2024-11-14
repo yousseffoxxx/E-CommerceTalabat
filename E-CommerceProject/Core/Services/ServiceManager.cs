@@ -1,4 +1,6 @@
-﻿namespace Services
+﻿using Shared.AuthModels;
+
+namespace Services
 {
     public sealed class ServiceManager : IServiceManager
     {

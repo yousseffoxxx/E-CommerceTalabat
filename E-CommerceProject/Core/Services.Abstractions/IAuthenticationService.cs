@@ -1,4 +1,6 @@
-﻿namespace Services.Abstractions
+﻿using Shared.AuthModels;
+
+namespace Services.Abstractions
 {
     public interface IAuthenticationService
     {

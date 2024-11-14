@@ -1,4 +1,6 @@
-﻿namespace Services.Mapping_Profiles
+﻿using Shared.BasketModels;
+
+namespace Services.Mapping_Profiles
 {
     internal class BasketProfile : Profile
     {

@@ -1,4 +1,4 @@
-﻿namespace Shared
+﻿namespace Shared.ProductModels
 {
     // C# 9.0 Feature
     public record ProductResultDTO
